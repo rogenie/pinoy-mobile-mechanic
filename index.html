@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinoy Mobile Mechanic | Mobile Auto Repair, San Diego</title>
+<meta name="description" content="Mobile mechanic serving San Diego within 50 miles of Mira Mesa. Hybrid, brakes, oil changes, diagnostics and A/C — we come to you. Book online in a minute.">
+<meta name="theme-color" content="#C41E24">
+<link rel="canonical" href="https://pinoymobilemechanic.com/">
+
+<!-- How the link looks when shared on Facebook, Instagram, iMessage -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pinoy Mobile Mechanic">
+<meta property="og:title" content="Pinoy Mobile Mechanic — we come to you">
+<meta property="og:description" content="Mobile auto repair across San Diego. Hybrid, brakes, oil changes, diagnostics, A/C. Book a visit online.">
+<meta property="og:url" content="https://pinoymobilemechanic.com/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Once you have the logo file, upload it and add:
+     <meta property="og:image" content="https://pinoymobilemechanic.com/logo.png"> -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23C41E24'/%3E%3Ctext x='50' y='71' font-family='Archivo,Helvetica,Arial,sans-serif' font-size='58' font-weight='800' fill='%23fff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Pinoy Mobile Mechanic LLC",
+  "telephone": "+1-858-933-7045",
+  "email": "PinoyMobileMechanicLLC@gmail.com",
+  "url": "https://pinoymobilemechanic.com/",
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {"@type": "GeoCoordinates", "postalCode": "92126", "addressCountry": "US"},
+    "geoRadius": "80467"
+  },
+  "address": {"@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA", "addressCountry": "US"},
+  "openingHours": "Mo-Sa 08:00-17:00",
+  "sameAs": [
+    "https://instagram.com/pinoy_mobile_mechanic",
+    "https://www.facebook.com/Pinoymobilemechanic"
+  ]
+}
+</script>
+</head>
+<body>
+
+<style>
+/* ============================================================
+   Pinoy Mobile Mechanic LLC — booking page.
+   Everything is filled in. To change anything later:
+   - booking link / phone -> CONFIG block at the very bottom
+   - hours   -> <table class="hrs">
+   - area    -> "Where we go" section
+   - services -> <ul class="svc">
+   Still missing: the logo artwork, and starting prices.
+   ============================================================ */
+
+:root{
+  --ground:#EDEEF0;
+  --surface:#F8F9FA;
+  --ink:#16181C;
+  --ink-2:#4B535C;
+  --ink-3:#7B838C;
+  --rule:#CDD1D6;
+  --rule-soft:#DEE1E5;
+  --accent:#C41E24;
+  --accent-ink:#FFFFFF;
+  --accent-text:#A3171C;
+  --shadow:rgba(22,24,28,.16);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#15181C;
+    --surface:#1D2228;
+    --ink:#ECEEF0;
+    --ink-2:#A0A9B2;
+    --ink-3:#79828B;
+    --rule:#2E353C;
+    --rule-soft:#242A30;
+    --accent:#DC2B31;
+    --accent-ink:#FFFFFF;
+    --accent-text:#F0666A;
+    --shadow:rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15181C;
+  --surface:#1D2228;
+  --ink:#ECEEF0;
+  --ink-2:#A0A9B2;
+  --ink-3:#79828B;
+  --rule:#2E353C;
+  --rule-soft:#242A30;
+  --accent:#DC2B31;
+  --accent-ink:#FFFFFF;
+  --accent-text:#F0666A;
+  --shadow:rgba(0,0,0,.55);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
+}
+
+.wrap{max-width:34rem;margin:0 auto;padding:0 20px}
+
+/* ---- masthead ---- */
+.mast{
+  border-bottom:1px solid var(--rule);
+  padding:22px 0 18px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.mast h1{
+  margin:0;
+  font-family:Archivo,system-ui,sans-serif;
+  font-weight:800;
+  font-size:clamp(1.45rem,6.4vw,1.95rem);
+  letter-spacing:-.032em;
+  line-height:1;
+  text-transform:uppercase;
+}
+.mast .sub{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+
+/* ---- hero ---- */
+.hero{padding:30px 0 26px;display:flex;flex-direction:column;gap:16px}
+.hero h2{
+  margin:0;
+  font-family:Archivo,system-ui,sans-serif;
+  font-weight:700;
+  font-size:clamp(1.9rem,8.8vw,2.7rem);
+  line-height:1.04;
+  letter-spacing:-.03em;
+  text-wrap:balance;
+}
+.hero h2 em{font-style:normal;color:var(--accent-text)}
+.hero p{margin:0;color:var(--ink-2);max-width:34ch}
+.hero .lede{color:var(--ink);font-size:1.03rem}
+
+.hazard{
+  height:9px;
+  border-radius:1px;
+  background:repeating-linear-gradient(-45deg,var(--accent) 0 10px,transparent 10px 20px);
+}
+
+/* ---- buttons ---- */
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:56px;
+  padding:0 22px;
+  border-radius:3px;
+  border:1.5px solid transparent;
+  font-family:Archivo,system-ui,sans-serif;
+  font-weight:700;
+  font-size:1.02rem;
+  text-transform:uppercase;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 2px 0 var(--shadow)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn .note{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-weight:400;
+  font-size:10px;
+  letter-spacing:.1em;
+  opacity:.78;
+}
+
+/* ---- sections ---- */
+section{padding:26px 0;border-top:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin:0 0 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
+
+h3{
+  margin:0 0 10px;
+  font-family:Archivo,system-ui,sans-serif;
+  font-weight:700;
+  font-size:1.28rem;
+  letter-spacing:-.018em;
+}
+
+/* ---- how it works: a real sequence ---- */
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:0}
+.steps li{
+  counter-increment:s;
+  display:flex;
+  gap:15px;
+  padding:14px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.steps li:last-child{border-bottom:0}
+.steps li::before{
+  content:counter(s);
+  flex:0 0 26px;
+  height:26px;
+  border-radius:50%;
+  background:var(--accent);
+  color:var(--accent-ink);
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:12px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:2px;
+}
+.steps strong{display:block;font-weight:600}
+.steps span{color:var(--ink-2);font-size:.94rem}
+
+/* ---- services ---- */
+.svc{list-style:none;margin:0;padding:0}
+.svc li{padding:12px 0;border-bottom:1px solid var(--rule-soft);font-weight:500}
+.svc li:last-child{border-bottom:0}
+.svc .det{display:block;font-weight:400;font-size:.9rem;color:var(--ink-2)}
+.svc-note{margin:14px 0 0;font-size:.9rem;color:var(--ink-3)}
+
+/* ---- hours ---- */
+.hrs{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hrs th,.hrs td{padding:10px 0;text-align:left;border-bottom:1px solid var(--rule-soft);font-weight:400}
+.hrs tr:last-child th,.hrs tr:last-child td{border-bottom:0}
+.hrs th{font-weight:500;width:52%}
+.hrs td{
+  text-align:right;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.88rem;
+  color:var(--ink-2);
+}
+.hrs tr.today th,.hrs tr.today td{color:var(--ink);font-weight:600}
+.hrs tr.today th::before{
+  content:"";
+  display:inline-block;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--accent);
+  margin-right:9px;
+  vertical-align:middle;
+}
+
+/* ---- contact rows ---- */
+.rows{display:flex;flex-direction:column;margin:0}
+.row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule-soft)}
+.row:last-child{border-bottom:0}
+.row dt{
+  flex:0 0 5rem;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  padding-top:4px;
+  margin:0;
+}
+.row dd{margin:0;flex:1;min-width:0}
+.row dd a{color:var(--accent-text);text-decoration:none;border-bottom:1px solid var(--rule);word-break:break-word}
+.row dd a:hover{border-bottom-color:var(--accent)}
+.row dd a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+.social{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:44px;
+  padding:0 15px;
+  border:1px solid var(--rule);
+  border-radius:3px;
+  text-decoration:none;
+  color:var(--ink);
+  font-size:.92rem;
+  font-weight:500;
+}
+.social:hover{border-color:var(--accent)}
+.social:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.social svg{width:17px;height:17px;fill:currentColor;flex:none}
+
+.close-cta{display:flex;flex-direction:column;gap:16px}
+
+footer{
+  border-top:1px solid var(--rule);
+  padding:20px 0 28px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px;
+  line-height:1.8;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+}
+
+/* ---- sticky action bar ---- */
+.dock{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:20;
+  background:var(--surface);
+  border-top:1px solid var(--rule);
+  padding:11px 20px calc(11px + env(safe-area-inset-bottom,0px));
+  transition:box-shadow .2s ease;
+}
+.dock.lifted{box-shadow:0 -6px 22px var(--shadow)}
+.dock-inner{max-width:34rem;margin:0 auto;display:flex;gap:10px}
+.dock .btn-primary{flex:1}
+.dock .btn-ghost{flex:0 0 auto;padding:0 18px}
+.dock .btn{min-height:52px;font-size:.95rem}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <h1>Pinoy Mobile Mechanic</h1>
+    <span class="sub">We come to you &middot; San Diego</span>
+  </header>
+
+  <div class="hero">
+    <h2>Your driveway <em>is</em> the shop.</h2>
+    <p class="lede">Hybrid, brakes, diagnostics, A/C and more — done at your home or your work lot. No tow, no waiting room, no dropping the car for three days.</p>
+    <div class="hazard" aria-hidden="true"></div>
+    <a class="btn btn-primary" data-book href="#">
+      Book a visit
+      <span class="note">1 MIN</span>
+    </a>
+    <p>Not sure what it needs? <a data-call href="#" style="color:var(--accent-text)">Call 858-933-7045</a> and just describe the noise.</p>
+  </div>
+
+  <section>
+    <p class="eyebrow">How it works</p>
+    <h3>Three steps, no shop visit</h3>
+    <ol class="steps">
+      <li>
+        <div>
+          <strong>Book a time and give us the address</strong>
+          <span>Tell us the year, make and model and what it is doing. Takes about a minute.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>The van shows up</strong>
+          <span>Fully equipped. We diagnose on the spot and give you a firm price before anything gets touched.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Most jobs are done right there</strong>
+          <span>You keep working, or watch from the porch. If a job needs a lift, we tell you straight.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Services</p>
+    <h3>What we handle</h3>
+    <ul class="svc">
+      <li>Hybrid service &amp; repair<span class="det">Battery diagnostics, inverter coolant, hybrid-specific maintenance</span></li>
+      <li>Brakes<span class="det">Pads, rotors, calipers, fluid flush</span></li>
+      <li>Oil change &amp; fluids<span class="det">Conventional, synthetic blend, full synthetic</span></li>
+      <li>Diagnostics<span class="det">Check-engine, electrical, no-start, warning lights</span></li>
+      <li>A/C service<span class="det">Recharge, leak check, compressor work</span></li>
+      <li>&hellip; and more<span class="det">Starters, alternators, belts, suspension, tune-ups. Ask.</span></li>
+    </ul>
+    <p class="svc-note">You get a firm quote before any work starts. Licensed with the California Bureau of Automotive Repair.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Where we go</p>
+    <h3>Service area</h3>
+    <p style="margin:0 0 12px;color:var(--ink-2)">We travel up to <b>50 miles from Mira Mesa (92126)</b> — which covers essentially all of San Diego County.</p>
+    <p style="margin:0 0 12px;color:var(--ink-2)">North to Oceanside, Vista, Escondido and Fallbrook. South to Chula Vista and the South Bay. East to El Cajon, Santee, Poway and Ramona. Plus everything in between — La Jolla, Del Mar, Carmel Valley, Scripps Ranch, Clairemont, Kearny Mesa, Mission Valley and the beaches.</p>
+    <p style="margin:0;color:var(--ink-3);font-size:.9rem">Further out? Call and ask — we can often still make it work.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Hours</p>
+    <h3>When we roll</h3>
+    <table class="hrs">
+      <tbody>
+        <tr data-day="1"><th scope="row">Monday</th><td>8:00 — 5:00</td></tr>
+        <tr data-day="2"><th scope="row">Tuesday</th><td>8:00 — 5:00</td></tr>
+        <tr data-day="3"><th scope="row">Wednesday</th><td>8:00 — 5:00</td></tr>
+        <tr data-day="4"><th scope="row">Thursday</th><td>8:00 — 5:00</td></tr>
+        <tr data-day="5"><th scope="row">Friday</th><td>8:00 — 5:00</td></tr>
+        <tr data-day="6"><th scope="row">Saturday</th><td>8:00 — 5:00</td></tr>
+        <tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="eyebrow">Contact</p>
+    <h3>Reach us</h3>
+    <dl class="rows">
+      <div class="row">
+        <dt>Phone</dt>
+        <dd><a data-call href="#">858-933-7045</a></dd>
+      </div>
+      <div class="row">
+        <dt>Email</dt>
+        <dd><a href="mailto:PinoyMobileMechanicLLC@gmail.com">PinoyMobileMechanicLLC@gmail.com</a></dd>
+      </div>
+      <div class="row">
+        <dt>Social</dt>
+        <dd>
+          <div class="socials">
+            <a class="social" href="https://instagram.com/pinoy_mobile_mechanic" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.2.78-.3.3-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.8 9.7 2.8 10.1 2.8 12s0 2.3.07 3.5c.05 1.1.24 1.7.4 2.1.2.5.44.9.78 1.2.3.3.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.2-.78.3-.3.6-.7.8-1.2.2-.4.3-1 .4-2.1.06-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.78-1.2-.3-.3-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Zm5.1-3.3a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg>
+              @pinoy_mobile_mechanic
+            </a>
+            <a class="social" href="https://www.facebook.com/Pinoymobilemechanic" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="close-cta">
+    <p class="eyebrow">Next step</p>
+    <h3>Pick a time</h3>
+    <p style="margin:0;color:var(--ink-2)">Give us the address, the vehicle, and what it is doing. We will bring the van to you.</p>
+    <a class="btn btn-primary" data-book href="#">Book a visit</a>
+  </section>
+
+  <footer>
+    Pinoy Mobile Mechanic LLC<br>
+    California Bureau of Automotive Repair &middot; ARD 315968
+  </footer>
+
+</div>
+
+<div class="dock" id="dock">
+  <div class="dock-inner">
+    <a class="btn btn-primary" data-book href="#">Book a visit</a>
+    <a class="btn btn-ghost" data-call href="#">Call</a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — paste the Google booking link here and you are live.
+   ============================================================ */
+var CONFIG = {
+  // STEP 1 of the guide gives you this link.
+  // Google Calendar > your appointment schedule > Share > copy link.
+  // Looks like https://calendar.app.google/aBcDeFgHiJkLmN
+  bookingUrl: "https://calendar.app.google/mxYcWMjDeqJaWwGKA",
+  phone: "+18589337045"
+};
+
+(function () {
+  var books = document.querySelectorAll("[data-book]");
+  for (var i = 0; i < books.length; i++) {
+    books[i].setAttribute("href", CONFIG.bookingUrl);
+    books[i].setAttribute("target", "_blank");
+    books[i].setAttribute("rel", "noopener");
+  }
+
+  var calls = document.querySelectorAll("[data-call]");
+  for (var j = 0; j < calls.length; j++) {
+    calls[j].setAttribute("href", "tel:" + CONFIG.phone);
+  }
+
+  var row = document.querySelector('.hrs tr[data-day="' + new Date().getDay() + '"]');
+  if (row) { row.classList.add("today"); }
+
+  var dock = document.getElementById("dock");
+  var onScroll = function () {
+    if (window.scrollY > 24) { dock.classList.add("lifted"); }
+    else { dock.classList.remove("lifted"); }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
