@@ -15,10 +15,13 @@
 <meta property="og:description" content="Mobile auto repair across San Diego. Hybrid, brakes, oil changes, diagnostics, A/C. Book a visit online.">
 <meta property="og:url" content="https://pinoymobilemechanic.com/">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Once you have the logo file, upload it and add:
-     <meta property="og:image" content="https://pinoymobilemechanic.com/logo.png"> -->
+<meta property="og:image" content="https://pinoymobilemechanic.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pinoy Mobile Mechanic — mobile auto repair, San Diego. 858-933-7045">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23C41E24'/%3E%3Ctext x='50' y='71' font-family='Archivo,Helvetica,Arial,sans-serif' font-size='58' font-weight='800' fill='%23fff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +35,8 @@
   "telephone": "+1-858-933-7045",
   "email": "PinoyMobileMechanicLLC@gmail.com",
   "url": "https://pinoymobilemechanic.com/",
+  "image": "https://pinoymobilemechanic.com/og-image.png",
+  "logo": "https://pinoymobilemechanic.com/logo.png",
   "areaServed": {
     "@type": "GeoCircle",
     "geoMidpoint": {"@type": "GeoCoordinates", "postalCode": "92126", "addressCountry": "US"},
@@ -56,7 +61,8 @@
    - hours   -> <table class="hrs">
    - area    -> "Where we go" section
    - services -> <ul class="svc">
-   Still missing: the logo artwork, and starting prices.
+   Logo files: logo.png, og-image.png, favicon.png, apple-touch-icon.png
+   Still missing: starting prices, if he wants them shown.
    ============================================================ */
 
 :root{
@@ -119,19 +125,27 @@ body{
 /* ---- masthead ---- */
 .mast{
   border-bottom:1px solid var(--rule);
-  padding:22px 0 18px;
+  padding:18px 0 16px;
   display:flex;
-  flex-direction:column;
-  gap:5px;
+  align-items:center;
+  gap:14px;
 }
+.mast .logo{
+  width:72px;
+  height:72px;
+  flex:none;
+  display:block;
+}
+.mast-text{display:flex;flex-direction:column;gap:4px;min-width:0}
 .mast h1{
   margin:0;
   font-family:Archivo,system-ui,sans-serif;
   font-weight:800;
-  font-size:clamp(1.45rem,6.4vw,1.95rem);
+  font-size:clamp(1.22rem,5.4vw,1.7rem);
   letter-spacing:-.032em;
-  line-height:1;
+  line-height:1.02;
   text-transform:uppercase;
+  text-wrap:balance;
 }
 .mast .sub{
   font-family:"IBM Plex Mono",ui-monospace,monospace;
@@ -347,8 +361,12 @@ footer{
 <div class="wrap">
 
   <header class="mast">
-    <h1>Pinoy Mobile Mechanic</h1>
-    <span class="sub">We come to you &middot; San Diego</span>
+    <img class="logo" src="logo.png" width="72" height="72"
+         alt="Pinoy Mobile Mechanic — we come to you">
+    <div class="mast-text">
+      <h1>Pinoy Mobile Mechanic</h1>
+      <span class="sub">We come to you &middot; San Diego</span>
+    </div>
   </header>
 
   <div class="hero">
