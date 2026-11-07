@@ -82,7 +82,7 @@ def load_articles():
     return arts
 
 
-def head(title, description, url, extra_ld):
+def head(title, description, url, extra_ld, current=None):
     ld = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>'
                  for x in extra_ld)
     return f"""<!doctype html>
@@ -110,7 +110,18 @@ def head(title, description, url, extra_ld):
 <body>
 <div class="wrap">
 <a class="mast" href="/"><img src="/logo.png" width="48" height="48" alt="Pinoy Mobile Mechanic logo"><div><b>Pinoy Mobile Mechanic</b><span>We come to you &middot; San Diego</span></div></a>
+{nav(current)}
 """
+
+
+MENU = [("why-us", "Why us", "/why-us/"), ("guides", "Guides", "/blog/"), ("reviews", "Reviews", "/reviews/")]
+
+
+def nav(current=None):
+    links = "".join(
+        f'<li><a href="{u}"{" aria-current=\"page\"" if k == current else ""}>{n}</a></li>'
+        for k, n, u in MENU)
+    return f'<nav aria-label="Main"><ul class="nav">{links}</ul></nav>'
 
 
 def tail():
@@ -167,7 +178,7 @@ def build_article(a, arts):
     if others:
         related = '<div class="related"><h2>More car repair guides</h2><ul class="list">' + "".join(
             f'<li><a href="/blog/{o["slug"]}/">{esc(o["title"])}</a></li>' for o in others) + "</ul></div>"
-    page = head(f"{a['title']} | Pinoy Mobile Mechanic", a["description"], url, ld)
+    page = head(f"{a['title']} | Pinoy Mobile Mechanic", a["description"], url, ld, "guides")
     page += f"""<p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Car repair guides</a></p>
 <article>
 <h1>{esc(a['title'])}</h1>
@@ -197,7 +208,7 @@ def build_index(arts):
         f'<li><a href="/blog/{a["slug"]}/">{esc(a["title"])}</a>'
         f'<p>{esc(a["description"])}</p><p class="meta">{nice_date(a["date"])}</p></li>'
         for a in arts)
-    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld)
+    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld, "guides")
     page += f"""<p class="crumbs"><a href="/">Home</a> / Car repair guides</p>
 <h1>{title}</h1>
 <p class="lede">Plain-English answers from a mobile mechanic who works on cars in driveways across San Diego County every day.</p>
@@ -211,7 +222,8 @@ def build_index(arts):
 
 def build_sitemap(arts):
     today = datetime.date.today().isoformat()
-    urls = [(SITE + "/", today), (SITE + "/blog/", today), (SITE + "/links/", today)]
+    urls = [(SITE + "/", today), (SITE + "/why-us/", today), (SITE + "/blog/", today),
+            (SITE + "/reviews/", today), (SITE + "/links/", today)]
     urls += [(f"{SITE}/blog/{a['slug']}/", a["date"].isoformat()) for a in arts]
     body = "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(
@@ -257,6 +269,87 @@ def build_links_page(arts):
     page += tail()
     os.makedirs(os.path.join(ROOT, "links"), exist_ok=True)
     open(os.path.join(ROOT, "links", "index.html"), "w", encoding="utf-8").write(page)
+
+
+# Paste the Google "Ask for reviews" short link here once the Google Business Profile is verified.
+GOOGLE_REVIEW_LINK = ""
+
+
+def build_why_us():
+    url = SITE + "/why-us/"
+    title = "Why San Diego Drivers Trust Pinoy Mobile Mechanic"
+    desc = ("Licensed by the California Bureau of Automotive Repair, a written quote before any work, "
+            "and repairs at your home or work lot anywhere in San Diego County.")
+    ld = [{"@context": "https://schema.org", "@type": "AboutPage", "name": title, "url": url,
+           "about": BUSINESS}]
+    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld, "why-us")
+    page += f"""<p class="crumbs"><a href="/">Home</a> / Why us</p>
+<h1>Why San Diego drivers trust us</h1>
+<p class="lede">Pinoy Mobile Mechanic is a local, family-run mobile auto repair business based in Mira Mesa. We bring the shop to your driveway or work lot, tell you what's wrong in plain words, and put the price in writing before we touch anything.</p>
+<div class="hazard" aria-hidden="true"></div>
+<ul class="facts">
+<li><b>Licensed in California</b>Pinoy Mobile Mechanic LLC is registered with the California Bureau of Automotive Repair, license ARD 315968. You can look it up on the <a href="https://www.bar.ca.gov/" target="_blank" rel="noopener">Bureau of Automotive Repair</a> website.</li>
+<li><b>A written quote before any work</b>You see the price in writing and approve it before a repair starts. If something else comes up, we ask again first. Nothing gets done without your OK.</li>
+<li><b>Straight answers</b>We explain what's wrong without the jargon. If a job really needs a shop with a lift, we tell you so instead of guessing in your driveway.</li>
+<li><b>We come to you</b>Home, apartment lot or office parking lot, anywhere within 50 miles of Mira Mesa. That covers all of San Diego County, Monday to Saturday, 8 AM to 5 PM.</li>
+<li><b>A real person answers</b>Call or text <a href="tel:{PHONE}">{PHONE_TEXT}</a> and you talk to the mechanic, not a call center.</li>
+<li><b>Free, honest guides</b>Our <a href="/blog/">car repair guides</a> explain what common problems mean, so you know what you're dealing with before you book anyone.</li>
+</ul>
+<h2>How a visit works</h2>
+<ol>
+<li><b>Book online or call.</b> Tell us the address, the vehicle and what it's doing.</li>
+<li><b>We find the cause.</b> The van arrives equipped, and we diagnose the problem where the car is parked.</li>
+<li><b>You approve a written quote.</b> No surprises.</li>
+<li><b>We fix it on the spot.</b> Most jobs are done right there while you keep working.</li>
+</ol>
+<p>See what customers say on our <a href="/reviews/">reviews page</a>.</p>
+{cta()}
+"""
+    page += tail()
+    os.makedirs(os.path.join(ROOT, "why-us"), exist_ok=True)
+    open(os.path.join(ROOT, "why-us", "index.html"), "w", encoding="utf-8").write(page)
+
+
+def build_reviews():
+    url = SITE + "/reviews/"
+    title = "Customer Reviews"
+    desc = ("Reviews and testimonials from Pinoy Mobile Mechanic customers across San Diego County, "
+            "copied word for word from Google, Facebook and Yelp.")
+    data = yaml.safe_load(open(os.path.join(ROOT, "content", "reviews.yml"), encoding="utf-8")) or {}
+    reviews = data.get("reviews") or []
+    reviews.sort(key=lambda r: str(r.get("date", "")), reverse=True)
+    cards = ""
+    for r in reviews:
+        stars = "&#9733;" * int(r.get("rating", 5))
+        where = f" &middot; {esc(r['area'])}" if r.get("area") else ""
+        src = esc(r.get("source", ""))
+        if r.get("link"):
+            src = f'<a href="{esc(r["link"])}" target="_blank" rel="noopener">{src}</a>'
+        cards += (f'<div class="review"><p aria-label="{int(r.get("rating", 5))} out of 5 stars" '
+                  f'style="color:var(--accent-text)">{stars}</p><p>&ldquo;{esc(r["text"])}&rdquo;</p>'
+                  f'<p class="meta">{esc(r["name"])}{where} &middot; {src} &middot; {esc(r.get("date", ""))}</p></div>')
+    if not cards:
+        cards = ("<p>We're a new business collecting our first online reviews. Every review shown here "
+                 "will be a real one, copied word for word from where the customer posted it.</p>")
+    leave = ""
+    if GOOGLE_REVIEW_LINK:
+        leave = (f'<p><a class="btn btn-primary" href="{GOOGLE_REVIEW_LINK}" target="_blank" '
+                 f'rel="noopener">Leave a Google review</a></p>')
+    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, [], "reviews")
+    page += f"""<p class="crumbs"><a href="/">Home</a> / Reviews</p>
+<h1>What customers say</h1>
+<p class="lede">Real reviews from drivers we've helped across San Diego County.</p>
+<div class="hazard" aria-hidden="true"></div>
+{cards}
+<h2>Had us out recently?</h2>
+<p>A short review helps other San Diego drivers find a mechanic they can trust.</p>
+{leave}
+<p><a class="btn btn-ghost" href="https://www.facebook.com/Pinoymobilemechanic" target="_blank" rel="noopener">See us on Facebook</a></p>
+{cta()}
+"""
+    page += tail()
+    os.makedirs(os.path.join(ROOT, "reviews"), exist_ok=True)
+    open(os.path.join(ROOT, "reviews", "index.html"), "w", encoding="utf-8").write(page)
 
 
 def update_homepage(arts):
@@ -313,6 +406,8 @@ def main():
     build_sitemap(arts)
     build_llms_txt(arts)
     build_links_page(arts)
+    build_why_us()
+    build_reviews()
     update_homepage(arts)
     print(f"built {len(arts)} article(s)")
 

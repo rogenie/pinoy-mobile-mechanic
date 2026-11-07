@@ -1,0 +1,11 @@
+# Real customer reviews only. Never invent, edit the meaning of, or combine reviews.
+# Copy them word for word from Google, Facebook or Yelp (or a customer's text, with their OK to share).
+# Each entry:
+#   - name: "Maria S."          # first name + last initial
+#     area: "Mira Mesa"         # optional
+#     date: 2026-11-01
+#     rating: 5                 # 1-5, as given on the source
+#     source: "Google"          # Google, Facebook, Yelp or "Text message"
+#     link: "https://..."       # link to the review if public (optional)
+#     text: "..."
+reviews: []
