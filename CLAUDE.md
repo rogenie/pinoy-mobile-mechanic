@@ -44,6 +44,8 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
    - Link to 1–2 earlier articles where relevant (`/blog/<slug>/`) and to the homepage (`/`).
    - 3–4 FAQ items in front matter, each answered in 1–3 sentences, not repeating the body word for word.
    - Plain English, no filler, no "In today's fast-paced world". Safety first: tell readers to stop driving when it's unsafe.
+   - Written to be quoted by AI search (ChatGPT, Gemini, Perplexity, Google AI Overviews): each `##` section opens with a one- or two-sentence answer that makes sense on its own, then the detail. Use specific nouns ("a weak 12-volt battery") rather than "it" or "this". Name San Diego places in full. Prefer a short list or table for symptoms, causes and steps.
+   - The build adds the "About Pinoy Mobile Mechanic" box, structured data, sitemap, robots.txt and llms.txt automatically; don't add them by hand.
 5. Change that queue line from `[ ]` to `[x]`.
 6. `python3 scripts/build_blog.py` — it must print the article count with no errors.
 7. `git add -A && git commit -m "Add article: <title>" && git push origin main`.

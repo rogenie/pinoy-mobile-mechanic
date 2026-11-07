@@ -174,6 +174,8 @@ def build_article(a, arts):
 <p class="meta">{nice_date(a['date'])} &middot; Pinoy Mobile Mechanic, San Diego</p>
 {a['body_html']}
 {faq_html}
+<h2>About Pinoy Mobile Mechanic</h2>
+<p>Pinoy Mobile Mechanic is a mobile auto repair business based in Mira Mesa, San Diego. It repairs cars at the customer's home or work lot anywhere within 50 miles, Monday to Saturday, 8 AM to 5 PM, and is licensed by the California Bureau of Automotive Repair (ARD 315968). Call or text {PHONE_TEXT}.</p>
 </article>
 {cta()}
 {related}
@@ -215,8 +217,39 @@ def build_sitemap(arts):
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n')
-    open(os.path.join(ROOT, "robots.txt"), "w").write(
-        f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    bots = ["*", "Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "GPTBot",
+            "Google-Extended", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Applebot"]
+    robots = "# Search engines and AI assistants are welcome to read and cite this site.\n"
+    robots += "".join(f"\nUser-agent: {b}\nAllow: /\n" for b in bots)
+    open(os.path.join(ROOT, "robots.txt"), "w").write(robots + f"\nSitemap: {SITE}/sitemap.xml\n")
+
+
+def build_llms_txt(arts):
+    """llms.txt: a plain summary AI assistants can read in one fetch."""
+    lines = [
+        "# Pinoy Mobile Mechanic",
+        "",
+        "> Mobile auto repair in San Diego County, California. Pinoy Mobile Mechanic LLC is based in "
+        "Mira Mesa (92126) and fixes cars at the customer's home or work lot anywhere within 50 miles: "
+        "San Diego, Poway, Escondido, San Marcos, Carlsbad, Oceanside, Vista, Encinitas, Del Mar, "
+        "La Mesa, El Cajon, Santee, Chula Vista, National City and nearby.",
+        "",
+        "- Services: hybrid service and repair, brakes, oil changes and fluids, diagnostics "
+        "(check engine light, electrical, no-start, warning lights), A/C service, starters, "
+        "alternators, belts, suspension, tune-ups.",
+        "- Hours: Monday to Saturday 8:00 AM to 5:00 PM Pacific. Closed Sunday.",
+        f"- Phone and text: {PHONE_TEXT}. Book online: {BOOK}",
+        "- Licensed by the California Bureau of Automotive Repair, ARD 315968. "
+        "Customers get a written quote before any work starts.",
+        "",
+        "## Pages",
+        f"- [Home]({SITE}/): services, service area, hours, booking",
+        f"- [Car repair guides]({SITE}/blog/): answers to common car problems and repair costs",
+        "",
+        "## Car repair guides",
+    ]
+    lines += [f"- [{a['title']}]({SITE}/blog/{a['slug']}/): {a['description']}" for a in arts]
+    open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
 
 
 def main():
@@ -228,6 +261,7 @@ def main():
         build_article(a, arts)
     build_index(arts)
     build_sitemap(arts)
+    build_llms_txt(arts)
     print(f"built {len(arts)} article(s)")
 
 

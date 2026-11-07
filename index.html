@@ -37,13 +37,38 @@
   "url": "https://pinoymobilemechanic.com/",
   "image": "https://pinoymobilemechanic.com/og-image.png",
   "logo": "https://pinoymobilemechanic.com/logo.png",
-  "areaServed": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {"@type": "GeoCoordinates", "postalCode": "92126", "addressCountry": "US"},
-    "geoRadius": "80467"
-  },
-  "address": {"@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA", "addressCountry": "US"},
+  "description": "Mobile mechanic based in Mira Mesa, San Diego. Repairs cars at the customer's home or work lot within 50 miles: brakes, batteries, starters, alternators, diagnostics, A/C, hybrid service, oil changes, belts, suspension and tune-ups. Written quote before any work.",
+  "areaServed": [
+    {"@type": "GeoCircle",
+     "geoMidpoint": {"@type": "GeoCoordinates", "postalCode": "92126", "addressCountry": "US"},
+     "geoRadius": "80467"},
+    {"@type": "AdministrativeArea", "name": "San Diego County, CA"},
+    {"@type": "City", "name": "San Diego"}, {"@type": "City", "name": "Poway"},
+    {"@type": "City", "name": "Escondido"}, {"@type": "City", "name": "San Marcos"},
+    {"@type": "City", "name": "Carlsbad"}, {"@type": "City", "name": "Oceanside"},
+    {"@type": "City", "name": "Vista"}, {"@type": "City", "name": "Encinitas"},
+    {"@type": "City", "name": "Solana Beach"}, {"@type": "City", "name": "Del Mar"},
+    {"@type": "City", "name": "Santee"}, {"@type": "City", "name": "La Mesa"},
+    {"@type": "City", "name": "El Cajon"}, {"@type": "City", "name": "Lemon Grove"},
+    {"@type": "City", "name": "National City"}, {"@type": "City", "name": "Chula Vista"},
+    {"@type": "City", "name": "Coronado"}, {"@type": "City", "name": "Imperial Beach"}
+  ],
+  "address": {"@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA", "postalCode": "92126", "addressCountry": "US"},
   "openingHours": "Mo-Sa 08:00-17:00",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Mobile auto repair services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile brake repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Car battery replacement"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Starter and alternator replacement"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Check engine light diagnostics"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Car A/C service"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hybrid service and repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Oil change and fluid service"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Belts, suspension and tune-ups"}}
+    ]
+  },
   "sameAs": [
     "https://instagram.com/pinoy_mobile_mechanic",
     "https://www.facebook.com/Pinoymobilemechanic"
@@ -441,6 +466,29 @@ footer{
         <tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr>
       </tbody>
     </table>
+  </section>
+
+  <section>
+    <p class="eyebrow">Questions</p>
+    <h3>Common questions</h3>
+    <dl class="rows">
+      <div class="row"><dt>Where</dt><dd><b>Do you come to my home or work?</b><br>Yes. We repair cars in driveways, apartment and office parking lots, and on the street where it's safe, anywhere within 50 miles of Mira Mesa, San Diego.</dd></div>
+      <div class="row"><dt>Area</dt><dd><b>Which areas do you cover?</b><br>All of San Diego County: San Diego, Poway, Escondido, San Marcos, Carlsbad, Oceanside, Vista, Encinitas, Del Mar, Santee, La Mesa, El Cajon, Chula Vista, National City, Coronado and more.</dd></div>
+      <div class="row"><dt>Jobs</dt><dd><b>What can you fix on site?</b><br>Brakes, batteries, starters, alternators, check engine light and electrical diagnostics, A/C, hybrid service, oil changes, belts, suspension and tune-ups. If a job needs a lift, we tell you straight.</dd></div>
+      <div class="row"><dt>Price</dt><dd><b>How do I know the price?</b><br>You get a written quote before any work starts, as California law requires. Nothing is done without your OK.</dd></div>
+      <div class="row"><dt>License</dt><dd><b>Are you licensed?</b><br>Yes. Pinoy Mobile Mechanic LLC is registered with the California Bureau of Automotive Repair, ARD 315968.</dd></div>
+      <div class="row"><dt>Book</dt><dd><b>How do I book?</b><br>Tap Book a visit to pick a time online, or call or text 858-933-7045. We're out Monday to Saturday, 8 AM to 5 PM.</dd></div>
+    </dl>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Do you come to my home or work?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pinoy Mobile Mechanic repairs cars in driveways, apartment and office parking lots, and on the street where it's safe, anywhere within 50 miles of Mira Mesa, San Diego."}},
+      {"@type":"Question","name":"Which areas do you cover?","acceptedAnswer":{"@type":"Answer","text":"All of San Diego County, including San Diego, Poway, Escondido, San Marcos, Carlsbad, Oceanside, Vista, Encinitas, Del Mar, Santee, La Mesa, El Cajon, Chula Vista, National City and Coronado."}},
+      {"@type":"Question","name":"What can a mobile mechanic fix on site?","acceptedAnswer":{"@type":"Answer","text":"Brakes, batteries, starters, alternators, check engine light and electrical diagnostics, A/C, hybrid service, oil changes, belts, suspension and tune-ups. Jobs that need a lift are referred honestly."}},
+      {"@type":"Question","name":"How do I know the price?","acceptedAnswer":{"@type":"Answer","text":"You get a written quote before any work starts, as California law requires, and nothing is done without your approval."}},
+      {"@type":"Question","name":"Is Pinoy Mobile Mechanic licensed?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pinoy Mobile Mechanic LLC is registered with the California Bureau of Automotive Repair, ARD 315968."}},
+      {"@type":"Question","name":"How do I book a mobile mechanic?","acceptedAnswer":{"@type":"Answer","text":"Book online at pinoymobilemechanic.com or call or text 858-933-7045. Service hours are Monday to Saturday, 8 AM to 5 PM."}}
+    ]}
+    </script>
   </section>
 
   <section>

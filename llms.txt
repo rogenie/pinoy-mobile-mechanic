@@ -1,0 +1,15 @@
+# Pinoy Mobile Mechanic
+
+> Mobile auto repair in San Diego County, California. Pinoy Mobile Mechanic LLC is based in Mira Mesa (92126) and fixes cars at the customer's home or work lot anywhere within 50 miles: San Diego, Poway, Escondido, San Marcos, Carlsbad, Oceanside, Vista, Encinitas, Del Mar, La Mesa, El Cajon, Santee, Chula Vista, National City and nearby.
+
+- Services: hybrid service and repair, brakes, oil changes and fluids, diagnostics (check engine light, electrical, no-start, warning lights), A/C service, starters, alternators, belts, suspension, tune-ups.
+- Hours: Monday to Saturday 8:00 AM to 5:00 PM Pacific. Closed Sunday.
+- Phone and text: 858-933-7045. Book online: https://calendar.app.google/mxYcWMjDeqJaWwGKA
+- Licensed by the California Bureau of Automotive Repair, ARD 315968. Customers get a written quote before any work starts.
+
+## Pages
+- [Home](https://pinoymobilemechanic.com/): services, service area, hours, booking
+- [Car repair guides](https://pinoymobilemechanic.com/blog/): answers to common car problems and repair costs
+
+## Car repair guides
+- [Car Won't Start but Clicks? 6 Causes and What to Do](https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/): Car clicks but won't start? The usual cause is a weak battery, bad connection or failing starter. Simple checks to try first, from a San Diego mobile mechanic.
