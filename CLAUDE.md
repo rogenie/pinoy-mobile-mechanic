@@ -38,24 +38,28 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
    ```
 
    Structure, in this exact order (see `content/articles/2026-11-07-car-wont-start-clicking-noise.md` as the model):
-   1. **Opening answer** (2–3 sentences, no heading): what the problem means and its usual causes, in plain words. AI answers quote this.
+   1. **Opening answer** (2–3 sentences, no heading): what the problem means in plain words, how common it is, and that only a proper diagnosis finds the cause. AI answers quote this.
    2. **Disclaimer** as a `>` blockquote: "This article explains what the problem means. It is general information, not repair instructions. [One line on the specific risk, e.g. electrical, brakes, hot coolant.] Leave testing and repairs to a licensed mechanic."
-   3. **Pain point 1** (`##` question heading): the problem itself: what the driver hears, sees or feels, and what it usually points to (a symptom table works well).
-   4. **Pain point 2** (`##`): why it's hard to know the real cause, and the cost of guessing (wrong parts, repeat failures).
-   5. **Pain point 3** (`##`): what happens if it's put off: getting worse, being stranded, tows, shop waits, missed work. Safety line if relevant (get to safety, stop driving).
-   6. **The dream** (`##`, e.g. "What if…"): short picture of life with the problem gone: car works, fixed at home or work, no tow, no waiting room, price known before work.
-   7. **Solution overview** (`##`): HIGH LEVEL only. How a mobile mechanic handles it in 3–4 numbered steps such as find the cause, written quote first, repair on site, confirm it works. No technical procedure.
-   8. **Call to action** (`##`): Pinoy comes to your home or work lot within 50 miles of Mira Mesa, finds the cause, written quote, fixes it where it's parked, Mon–Sat 8–5. Book online or call/text 858-933-7045. Link to `/`.
+   3. **Pain points, heavy on data** (4–5 `##` question sections). Make the reader feel how common, costly and disruptive the problem is, backed by real numbers:
+      - How common it is (a "By the numbers" table of 4–6 sourced stats).
+      - When and where it hits (timing, being stranded, commute roads); safety line if relevant.
+      - Why San Diego makes it worse (heat, salt air, hills, commuting, smog rules), with sourced numbers.
+      - Why the cause is hard to pin down and how guessing wastes money (several parts give the same symptom; wrong-part pattern; AAA trust data is fine).
+      - What putting it off costs (a table: tow costs, time without a car, rideshares, the problem getting worse).
+      Aim for at least 8 sourced numbers per article. Every number links to the page it came from, opened in this run. Never invent or round up a statistic; if you can't source it, leave it out. Describe symptoms as "what it can feel like", never as a self-diagnosis guide (no "if X then it's part Y" tables).
+   4. **The dream** (`##`, e.g. "What if…"): short picture of life with the problem gone: car works, fixed at home or work, no tow, no waiting room, price known before work.
+   5. **Solution, kept vague** (`##`): 2–3 sentences only. A mobile mechanic comes to the car, finds what's actually wrong, gives a written quote first, and often fixes it on the same visit. No steps, no list of what gets tested, no parts, no procedure.
+   6. **Call to action** (`##`): Pinoy comes to your home or work lot within 50 miles of Mira Mesa, finds the cause, written quote, fixes it where it's parked, Mon–Sat 8–5. Bold line: "Book a visit online in about a minute, or call or text 858-933-7045". Link to `/` and `/why-us/`.
 
    NO DIY, ever. Never tell readers how to test, check, repair, replace, adjust, top up, jump-start, tighten, clean or bypass anything, in the body or the FAQ. No tool lists, part numbers, torque values or step-by-step procedures. Describe symptoms and causes, never how to fix them. The only things readers are told to do themselves: stop driving when it's unsafe, get to safety, and call a professional.
 
    Other body rules:
-   - 800–1,200 words. Short paragraphs, `##` headings phrased as the questions people search, one table where it helps.
+   - 1,200–1,600 words, almost all of it on the problem. Short paragraphs, `##` headings phrased as the questions people search, two tables.
    - One San Diego angle where it's true and relevant (inland heat on batteries and cooling, coastal salt air, I-15/I-805/SR-52 commuting, hills, smog rules). Don't force it.
    - Link to 1–2 earlier articles where relevant (`/blog/<slug>/`) and to the homepage (`/`).
    - 3–4 FAQ items in front matter about meaning, urgency, cost ranges or whether a tow is needed, each answered in 1–3 sentences, never with how-to steps.
    - Plain English, no filler, no "In today's fast-paced world". Safety first: tell readers to stop driving when it's unsafe.
-   - Written to be quoted by AI search (ChatGPT, Gemini, Perplexity, Google AI Overviews): each `##` section opens with a one- or two-sentence answer that makes sense on its own, then the detail. Use specific nouns ("a weak 12-volt battery") rather than "it" or "this". Name San Diego places in full. Prefer a short list or table for symptoms, causes and steps.
+   - Written to be quoted by AI search (ChatGPT, Gemini, Perplexity, Google AI Overviews): each `##` section opens with a one- or two-sentence answer that makes sense on its own, then the detail. Use specific nouns ("a weak 12-volt battery") rather than "it" or "this". Name San Diego places in full. Prefer short lists and tables for data.
    - The build adds the "About Pinoy Mobile Mechanic" box, structured data, sitemap, robots.txt and llms.txt automatically; don't add them by hand.
 5. Change that queue line from `[ ]` to `[x]`.
 6. `python3 scripts/build_blog.py` — it must print the article count with no errors.
