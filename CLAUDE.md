@@ -5,7 +5,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - `index.html` — homepage (booking link and phone in the CONFIG block at the bottom)
 - `content/articles/*.md` — blog articles (front matter + Markdown). Source of truth.
 - `content/keywords.md` — article queue
-- `scripts/build_blog.py` — builds `blog/`, `sitemap.xml`, `robots.txt` from the articles. Never hand-edit `blog/*/index.html` or `sitemap.xml`.
+- `scripts/build_blog.py` — builds `blog/`, `links/` (all guides + social links), `sitemap.xml`, `robots.txt`, `llms.txt`, and the newest-guides list between the GUIDES markers in `index.html`. Never hand-edit those outputs. Social accounts live in `SOCIALS` in the script.
 
 ## Business facts (use only these)
 

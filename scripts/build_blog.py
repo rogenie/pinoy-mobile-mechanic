@@ -211,7 +211,7 @@ def build_index(arts):
 
 def build_sitemap(arts):
     today = datetime.date.today().isoformat()
-    urls = [(SITE + "/", today), (SITE + "/blog/", today)]
+    urls = [(SITE + "/", today), (SITE + "/blog/", today), (SITE + "/links/", today)]
     urls += [(f"{SITE}/blog/{a['slug']}/", a["date"].isoformat()) for a in arts]
     body = "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(
@@ -222,6 +222,56 @@ def build_sitemap(arts):
     robots = "# Search engines and AI assistants are welcome to read and cite this site.\n"
     robots += "".join(f"\nUser-agent: {b}\nAllow: /\n" for b in bots)
     open(os.path.join(ROOT, "robots.txt"), "w").write(robots + f"\nSitemap: {SITE}/sitemap.xml\n")
+
+
+SOCIALS = [
+    ("Instagram", "@pinoy_mobile_mechanic", "https://instagram.com/pinoy_mobile_mechanic"),
+    ("Facebook", "Pinoy Mobile Mechanic", "https://www.facebook.com/Pinoymobilemechanic"),
+]
+
+
+def build_links_page(arts):
+    """/links/: every guide plus social accounts. Also works as a link-in-bio page."""
+    url = SITE + "/links/"
+    title = "Guides, Articles and Social Links"
+    desc = ("Every Pinoy Mobile Mechanic car repair guide in one place, plus our Instagram and "
+            "Facebook. Mobile auto repair across San Diego County.")
+    ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": title, "url": url,
+           "publisher": BUSINESS}]
+    socials = "".join(
+        f'<li><a href="{u}" target="_blank" rel="noopener">{esc(n)}</a><p>{esc(h)}</p></li>'
+        for n, h, u in SOCIALS)
+    guides = "".join(
+        f'<li><a href="/blog/{a["slug"]}/">{esc(a["title"])}</a><p class="meta">{nice_date(a["date"])}</p></li>'
+        for a in arts)
+    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld)
+    page += f"""<p class="crumbs"><a href="/">Home</a> / Links</p>
+<h1>Guides, articles and social links</h1>
+<p><a class="btn btn-primary" href="{BOOK}" target="_blank" rel="noopener">Book a visit</a></p>
+<p style="margin:10px 0 0"><a class="btn btn-ghost" href="tel:{PHONE}">Call or text {PHONE_TEXT}</a></p>
+<h2>Follow us</h2>
+<ul class="list">{socials}</ul>
+<h2>All car repair guides ({len(arts)})</h2>
+<ul class="list">{guides}</ul>
+"""
+    page += tail()
+    os.makedirs(os.path.join(ROOT, "links"), exist_ok=True)
+    open(os.path.join(ROOT, "links", "index.html"), "w", encoding="utf-8").write(page)
+
+
+def update_homepage(arts):
+    """Fill the newest guides between the GUIDES markers on the homepage."""
+    path = os.path.join(ROOT, "index.html")
+    s = open(path, encoding="utf-8").read()
+    start, end = "<!-- GUIDES:START -->", "<!-- GUIDES:END -->"
+    if start not in s or end not in s:
+        sys.exit("index.html is missing the GUIDES markers")
+    items = "".join(
+        f'<li><a href="/blog/{a["slug"]}/" style="color:var(--ink);text-decoration:none">{esc(a["title"])}</a></li>'
+        for a in arts[:5])
+    block = f'{start}\n    <ul class="svc">{items}</ul>\n    {end}'
+    s = s[:s.index(start)] + block + s[s.index(end) + len(end):]
+    open(path, "w", encoding="utf-8").write(s)
 
 
 def build_llms_txt(arts):
@@ -262,6 +312,8 @@ def main():
     build_index(arts)
     build_sitemap(arts)
     build_llms_txt(arts)
+    build_links_page(arts)
+    update_homepage(arts)
     print(f"built {len(arts)} article(s)")
 
 
