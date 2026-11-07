@@ -12,6 +12,7 @@ import datetime
 import html
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -331,6 +332,10 @@ def build_reviews():
     if not cards:
         cards = ("<p>We're a new business collecting our first online reviews. Every review shown here "
                  "will be a real one, copied word for word from where the customer posted it.</p>")
+    widget = open(os.path.join(ROOT, "content", "review-widget.html"), encoding="utf-8").read()
+    widget = re.sub(r"<!--.*?-->", "", widget, flags=re.S).strip()
+    if widget:
+        cards = f'<div class="review-widget">{widget}</div>\n' + (cards if reviews else "")
     leave = ""
     if GOOGLE_REVIEW_LINK:
         leave = (f'<p><a class="btn btn-primary" href="{GOOGLE_REVIEW_LINK}" target="_blank" '

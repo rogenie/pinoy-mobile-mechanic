@@ -8,6 +8,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - `scripts/build_blog.py` — builds `blog/`, `links/` (all guides + social links), `sitemap.xml`, `robots.txt`, `llms.txt`, and the newest-guides list between the GUIDES markers in `index.html`. Never hand-edit those outputs. Social accounts live in `SOCIALS` in the script.
 - Menu on every page: Why us (`/why-us/`), Guides (`/blog/`), Reviews (`/reviews/`), all built by the script.
 - `content/reviews.yml` — real reviews only, copied word for word with their source. Never write, invent or paraphrase a review or testimonial. The daily article run does not touch this file.
+- `content/review-widget.html` — embed code for the review widget (Google/Facebook/Yelp sync). Shown at the top of `/reviews/` when it holds code; empty means hidden. The daily article run does not touch it.
 
 ## Business facts (use only these)
 
