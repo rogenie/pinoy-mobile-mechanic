@@ -129,7 +129,8 @@ def tail():
     return f"""<footer>
 Pinoy Mobile Mechanic LLC &middot; Mobile auto repair within 50 miles of Mira Mesa, San Diego<br>
 California Bureau of Automotive Repair &middot; ARD 315968<br>
-<a href="/">Home</a> &middot; <a href="/blog/">Car repair guides</a> &middot; <a href="tel:{PHONE}">{PHONE_TEXT}</a>
+<a href="/">Home</a> &middot; <a href="/why-us/">Why us</a> &middot; <a href="/blog/">Car repair guides</a> &middot; <a href="/reviews/">Reviews</a> &middot; <a href="tel:{PHONE}">{PHONE_TEXT}</a><br>
+Follow us: {social_links()}
 </footer>
 </div>
 <div class="dock"><div class="dock-inner">
@@ -224,7 +225,7 @@ def build_index(arts):
 def build_sitemap(arts):
     today = datetime.date.today().isoformat()
     urls = [(SITE + "/", today), (SITE + "/why-us/", today), (SITE + "/blog/", today),
-            (SITE + "/reviews/", today), (SITE + "/links/", today)]
+            (SITE + "/reviews/", today)]
     urls += [(f"{SITE}/blog/{a['slug']}/", a["date"].isoformat()) for a in arts]
     body = "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(
@@ -237,39 +238,18 @@ def build_sitemap(arts):
     open(os.path.join(ROOT, "robots.txt"), "w").write(robots + f"\nSitemap: {SITE}/sitemap.xml\n")
 
 
+# Paste the Google Business Profile link (Share > copy link, or the Maps URL) once it's verified.
+GOOGLE_PROFILE_URL = ""
+
 SOCIALS = [
-    ("Instagram", "@pinoy_mobile_mechanic", "https://instagram.com/pinoy_mobile_mechanic"),
-    ("Facebook", "Pinoy Mobile Mechanic", "https://www.facebook.com/Pinoymobilemechanic"),
-]
+    ("Facebook", "https://www.facebook.com/Pinoymobilemechanic"),
+    ("Instagram", "https://instagram.com/pinoy_mobile_mechanic"),
+] + ([("Google", GOOGLE_PROFILE_URL)] if GOOGLE_PROFILE_URL else [])
 
 
-def build_links_page(arts):
-    """/links/: every guide plus social accounts. Also works as a link-in-bio page."""
-    url = SITE + "/links/"
-    title = "Guides, Articles and Social Links"
-    desc = ("Every Pinoy Mobile Mechanic car repair guide in one place, plus our Instagram and "
-            "Facebook. Mobile auto repair across San Diego County.")
-    ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": title, "url": url,
-           "publisher": BUSINESS}]
-    socials = "".join(
-        f'<li><a href="{u}" target="_blank" rel="noopener">{esc(n)}</a><p>{esc(h)}</p></li>'
-        for n, h, u in SOCIALS)
-    guides = "".join(
-        f'<li><a href="/blog/{a["slug"]}/">{esc(a["title"])}</a><p class="meta">{nice_date(a["date"])}</p></li>'
-        for a in arts)
-    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld)
-    page += f"""<p class="crumbs"><a href="/">Home</a> / Links</p>
-<h1>Guides, articles and social links</h1>
-<p><a class="btn btn-primary" href="{BOOK}" target="_blank" rel="noopener">Book a visit</a></p>
-<p style="margin:10px 0 0"><a class="btn btn-ghost" href="tel:{PHONE}">Call or text {PHONE_TEXT}</a></p>
-<h2>Follow us</h2>
-<ul class="list">{socials}</ul>
-<h2>All car repair guides ({len(arts)})</h2>
-<ul class="list">{guides}</ul>
-"""
-    page += tail()
-    os.makedirs(os.path.join(ROOT, "links"), exist_ok=True)
-    open(os.path.join(ROOT, "links", "index.html"), "w", encoding="utf-8").write(page)
+def social_links(color="var(--ink-3)"):
+    return " &middot; ".join(
+        f'<a href="{u}" target="_blank" rel="noopener" style="color:{color}">{n}</a>' for n, u in SOCIALS)
 
 
 # Paste the Google "Ask for reviews" short link here once the Google Business Profile is verified.
@@ -369,6 +349,10 @@ def update_homepage(arts):
         for a in arts[:5])
     block = f'{start}\n    <ul class="svc">{items}</ul>\n    {end}'
     s = s[:s.index(start)] + block + s[s.index(end) + len(end):]
+    s0, s1 = "<!-- SOCIAL:START -->", "<!-- SOCIAL:END -->"
+    if s0 not in s or s1 not in s:
+        sys.exit("index.html is missing the SOCIAL markers")
+    s = s[:s.index(s0)] + f"{s0}Follow us: {social_links()}{s1}" + s[s.index(s1) + len(s1):]
     open(path, "w", encoding="utf-8").write(s)
 
 
@@ -410,7 +394,6 @@ def main():
     build_index(arts)
     build_sitemap(arts)
     build_llms_txt(arts)
-    build_links_page(arts)
     build_why_us()
     build_reviews()
     update_homepage(arts)
