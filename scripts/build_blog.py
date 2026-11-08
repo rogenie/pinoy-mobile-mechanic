@@ -275,8 +275,8 @@ SERVICES = [
 
 # Approved starting prices (owner-approved Nov 7, 2026). Most sedans and small SUVs; final price is on the written quote.
 PRICES = [
-    ("Mobile diagnostic / check engine light", "$99", 99, "Credited toward the repair if you book it"),
-    ("No-start diagnosis", "$99", 99, ""),
+    ("Mobile diagnostic / check engine light", "$80–$150", 80, "Credited toward the repair if you book it"),
+    ("No-start diagnosis", "$80–$150", 80, ""),
     ("Synthetic oil change", "$89", 89, "Most cars, up to 5 quarts"),
     ("Battery replacement", "$199", 199, "Standard battery included"),
     ("Battery install only", "$59", 59, "You supply the battery"),
