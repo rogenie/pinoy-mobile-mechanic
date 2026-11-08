@@ -115,7 +115,7 @@ def head(title, description, url, extra_ld, current=None):
 """
 
 
-MENU = [("why-us", "Why us", "/why-us/"), ("guides", "Guides", "/blog/"), ("reviews", "Reviews", "/reviews/")]
+MENU = [("services", "Services", "/services/"), ("why-us", "Why us", "/why-us/"), ("guides", "Guides", "/blog/"), ("reviews", "Reviews", "/reviews/")]
 
 
 def nav(current=None):
@@ -129,7 +129,7 @@ def tail():
     return f"""<footer>
 Pinoy Mobile Mechanic LLC &middot; Mobile auto repair within 50 miles of Mira Mesa, San Diego<br>
 California Bureau of Automotive Repair &middot; ARD 315968<br>
-<a href="/">Home</a> &middot; <a href="/why-us/">Why us</a> &middot; <a href="/blog/">Car repair guides</a> &middot; <a href="/reviews/">Reviews</a> &middot; <a href="tel:{PHONE}">{PHONE_TEXT}</a><br>
+<a href="/">Home</a> &middot; <a href="/services/">Services</a> &middot; <a href="/why-us/">Why us</a> &middot; <a href="/blog/">Car repair guides</a> &middot; <a href="/reviews/">Reviews</a> &middot; <a href="tel:{PHONE}">{PHONE_TEXT}</a><br>
 Follow us: {social_links()}
 </footer>
 </div>
@@ -225,7 +225,7 @@ def build_index(arts):
 
 def build_sitemap(arts):
     today = datetime.date.today().isoformat()
-    urls = [(SITE + "/", today), (SITE + "/why-us/", today), (SITE + "/blog/", today),
+    urls = [(SITE + "/", today), (SITE + "/services/", today), (SITE + "/why-us/", today), (SITE + "/blog/", today),
             (SITE + "/reviews/", today)]
     urls += [(f"{SITE}/blog/{a['slug']}/", a["date"].isoformat()) for a in arts]
     body = "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
@@ -255,6 +255,43 @@ def social_links(color="var(--ink-3)"):
 
 # Paste the Google "Ask for reviews" short link here once the Google Business Profile is verified.
 GOOGLE_REVIEW_LINK = ""
+
+
+SERVICES = [
+    ("Brake repair", "Squealing, grinding, a soft pedal or a car that pulls when you stop. Pads, rotors, calipers and brake fluid service, done where the car is parked."),
+    ("Battery, starter and alternator", "A car that clicks, cranks slowly or won't start, or a battery light on the dash. We find which part failed before anything gets replaced."),
+    ("Check engine light and diagnostics", "Warning lights, electrical problems, no-starts and strange noises. We find the actual cause and explain it in plain words."),
+    ("Car A/C service", "Air blowing warm, weak airflow or odd smells from the vents. A/C diagnosis and repair in your driveway."),
+    ("Hybrid service and repair", "Hybrid warning lights and hybrid-specific maintenance, handled by a mechanic who works on hybrids."),
+    ("Oil change and fluids", "Conventional, synthetic blend and full synthetic oil changes, plus the other fluids your car depends on, without a trip to a quick-lube line."),
+    ("Belts, suspension and tune-ups", "Squeals at start-up, clunks over bumps, rough running and lost fuel economy, diagnosed and repaired on site."),
+]
+
+
+def build_services():
+    url = SITE + "/services/"
+    title = "Mobile Auto Repair Services in San Diego"
+    desc = ("Brakes, batteries, starters, alternators, diagnostics, A/C, hybrid service, oil changes and more, "
+            "done at your home or work anywhere in San Diego County.")
+    ld = [{"@context": "https://schema.org", "@type": "ItemList", "name": title, "url": url,
+           "itemListElement": [{"@type": "ListItem", "position": i + 1,
+                                "item": {"@type": "Service", "name": n, "description": d,
+                                         "provider": BUSINESS, "areaServed": "San Diego County, CA"}}
+                               for i, (n, d) in enumerate(SERVICES)]}]
+    items = "".join(f"<li><b>{esc(n)}</b>{esc(d)}</li>" for n, d in SERVICES)
+    page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld, "services")
+    page += f"""<p class="crumbs"><a href="/">Home</a> / Services</p>
+<h1>What we fix at your home or work</h1>
+<p class="lede">Pinoy Mobile Mechanic brings the repair to wherever your car is parked, anywhere within 50 miles of Mira Mesa. You get a written quote before any work starts.</p>
+<div class="hazard" aria-hidden="true"></div>
+<ul class="facts">{items}</ul>
+<p>Not sure which one you need? That's normal. <a href="{BOOK}" target="_blank" rel="noopener">Book a visit</a> or call or text <a href="tel:{PHONE}">{PHONE_TEXT}</a>, describe what the car is doing, and we'll find the cause. If a job truly needs a shop with a lift, we'll tell you straight.</p>
+<p>Want to understand a problem first? Read our <a href="/blog/">car repair guides</a>.</p>
+{cta()}
+"""
+    page += tail()
+    os.makedirs(os.path.join(ROOT, "services"), exist_ok=True)
+    open(os.path.join(ROOT, "services", "index.html"), "w", encoding="utf-8").write(page)
 
 
 def build_why_us():
@@ -416,6 +453,7 @@ def main():
     build_sitemap(arts)
     build_llms_txt(arts)
     build_status(arts)
+    build_services()
     build_why_us()
     build_reviews()
     update_homepage(arts)
