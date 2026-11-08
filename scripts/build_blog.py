@@ -255,7 +255,7 @@ def social_links(color="var(--ink-3)"):
 
 
 # Paste the Google "Ask for reviews" short link here once the Google Business Profile is verified.
-GOOGLE_REVIEW_LINK = ""
+GOOGLE_REVIEW_LINK = "https://g.page/r/CS9dYPHDmOvAEBM/review"
 # Review buttons on /reviews/ ("Had us out recently?"). Empty = button hidden.
 BING_REVIEW_LINK = ""    # Bing Places listing link, once it's set up
 YELP_REVIEW_LINK = ""    # Yelp business page link, once it exists
