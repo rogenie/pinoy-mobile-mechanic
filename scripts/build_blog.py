@@ -268,6 +268,36 @@ SERVICES = [
 ]
 
 
+# Approved starting prices (owner-approved Nov 7, 2026). Most sedans and small SUVs; final price is on the written quote.
+PRICES = [
+    ("Mobile diagnostic / check engine light", "$99", 99, "Credited toward the repair if you book it"),
+    ("No-start diagnosis", "$99", 99, ""),
+    ("Synthetic oil change", "$89", 89, "Most cars, up to 5 quarts"),
+    ("Battery replacement", "$199", 199, "Standard battery included"),
+    ("Battery install only", "$59", 59, "You supply the battery"),
+    ("Brake pads", "$199", 199, "Per axle"),
+    ("Brake pads and rotors", "$329", 329, "Per axle"),
+    ("Brake fluid flush", "$119", 119, ""),
+    ("Alternator replacement", "$399", 399, ""),
+    ("Starter replacement", "$349", 349, ""),
+    ("Spark plugs / tune-up", "$179", 179, "4-cylinder"),
+    ("Serpentine belt", "$149", 149, ""),
+    ("Thermostat", "$199", 199, ""),
+    ("Water pump", "$399", 399, ""),
+    ("Radiator replacement", "$449", 449, ""),
+    ("Pre-purchase inspection", "$149", 149, "With a written report"),
+    ("A/C recharge", "$149", 149, ""),
+    ("Any other job", "$130/hour + parts", None, ""),
+]
+PRICE_RULES = [
+    "Prices are starting prices for most sedans and small SUVs, parts and labor included unless noted. Trucks, European cars, hybrids and V6/V8 engines can cost more.",
+    "You get a written quote and approve it before any work starts.",
+    "No trip fee within 25 miles of Mira Mesa; $25 to $50 beyond that, up to 50 miles.",
+    "The diagnostic fee is credited toward the repair if you book it.",
+    "Warranty: 12 months / 12,000 miles on parts and labor. Customer-supplied parts get labor only.",
+]
+
+
 def build_services():
     url = SITE + "/services/"
     title = "Mobile Auto Repair Services in San Diego"
@@ -277,7 +307,11 @@ def build_services():
            "itemListElement": [{"@type": "ListItem", "position": i + 1,
                                 "item": {"@type": "Service", "name": n, "description": d,
                                          "provider": BUSINESS, "areaServed": "San Diego County, CA"}}
-                               for i, (n, d) in enumerate(SERVICES)]}]
+                               for i, (n, d) in enumerate(SERVICES)]},
+          {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Starting prices", "url": url + "#prices",
+           "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n},
+                                "priceSpecification": {"@type": "PriceSpecification", "minPrice": v, "priceCurrency": "USD"},
+                                "seller": BUSINESS} for n, _, v, _ in PRICES if v]}]
     items = "".join(f"<li><b>{esc(n)}</b>{esc(d)}</li>" for n, d in SERVICES)
     page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld, "services")
     page += f"""<p class="crumbs"><a href="/">Home</a> / Services</p>
@@ -285,6 +319,9 @@ def build_services():
 <p class="lede">Pinoy Mobile Mechanic brings the repair to wherever your car is parked, anywhere within 50 miles of Mira Mesa. You get a written quote before any work starts.</p>
 <div class="hazard" aria-hidden="true"></div>
 <ul class="facts">{items}</ul>
+<h2 id="prices">Starting prices</h2>
+<table><thead><tr><th>Service</th><th>Starting at</th></tr></thead><tbody>{"".join(f"<tr><td>{esc(n)}{(' <span style=\"color:var(--ink-3)\">(' + esc(note) + ')</span>') if note else ''}</td><td><b>{esc(p)}</b></td></tr>" for n, p, _, note in PRICES)}</tbody></table>
+<ul>{"".join(f"<li>{esc(r)}</li>" for r in PRICE_RULES)}</ul>
 <p>Not sure which one you need? That's normal. <a href="{BOOK}" target="_blank" rel="noopener">Book a visit</a> or call or text <a href="tel:{PHONE}">{PHONE_TEXT}</a>, describe what the car is doing, and we'll find the cause. If a job truly needs a shop with a lift, we'll tell you straight.</p>
 <p>Want to understand a problem first? Read our <a href="/blog/">car repair guides</a>.</p>
 {cta()}
@@ -431,6 +468,7 @@ def build_llms_txt(arts):
         f"- Phone and text: {PHONE_TEXT}. Book online: {BOOK}",
         "- Licensed by the California Bureau of Automotive Repair, ARD 315968. "
         "Customers get a written quote before any work starts.",
+        "- Starting prices (most cars): " + "; ".join(f"{n} {p}" for n, p, _, _ in PRICES) + ". " + " ".join(PRICE_RULES[2:]),
         "",
         "## Pages",
         f"- [Home]({SITE}/): services, service area, hours, booking",
