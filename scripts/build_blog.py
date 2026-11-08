@@ -356,6 +356,26 @@ def update_homepage(arts):
     open(path, "w", encoding="utf-8").write(s)
 
 
+def build_status(arts):
+    """status.json: read live by the dashboard at rogeniecordero.com/pinoymobilemechanic/."""
+    q = open(os.path.join(ROOT, "content", "keywords.md"), encoding="utf-8").read()
+    todo = [ln for ln in q.splitlines() if ln.startswith("- [ ]")]
+    nxt = todo[0][6:].split("|")[1].strip() if todo else None
+    reviews = (yaml.safe_load(open(os.path.join(ROOT, "content", "reviews.yml"), encoding="utf-8")) or {}).get("reviews") or []
+    data = {
+        "updated": datetime.date.today().isoformat(),
+        "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
+        "articles": [{"date": a["date"].isoformat(), "title": a["title"], "keyword": a.get("keyword", ""),
+                      "url": f"{SITE}/blog/{a['slug']}/"} for a in arts],
+        "queue_left": len(todo),
+        "next_topic": nxt,
+        "reviews_on_site": len(reviews),
+        "review_widget": bool(re.sub(r"<!--.*?-->", "", open(os.path.join(ROOT, "content", "review-widget.html"), encoding="utf-8").read(), flags=re.S).strip()),
+        "google_review_link": bool(GOOGLE_REVIEW_LINK),
+    }
+    open(os.path.join(ROOT, "status.json"), "w", encoding="utf-8").write(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+
+
 def build_llms_txt(arts):
     """llms.txt: a plain summary AI assistants can read in one fetch."""
     lines = [
@@ -394,6 +414,7 @@ def main():
     build_index(arts)
     build_sitemap(arts)
     build_llms_txt(arts)
+    build_status(arts)
     build_why_us()
     build_reviews()
     update_homepage(arts)
