@@ -18,7 +18,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - Services: hybrid service and repair, brakes, oil changes and fluids, diagnostics (check engine, electrical, no-start, warning lights), A/C service, starters, alternators, belts, suspension, tune-ups.
 - Do NOT state Pinoy prices (not approved yet), warranty terms, certifications (e.g. ASE), years of experience, review counts, or customer stories. Do not invent any of these.
 
-## Article workflow (every other day)
+## Daily article workflow (runs every other day)
 
 1. `git pull` on `main`.
 2. Open `content/keywords.md`, take the first unchecked line. Skip it if `content/articles/` already has that slug.
