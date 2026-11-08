@@ -17,8 +17,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - Licensed with the California Bureau of Automotive Repair, ARD 315968. Written quote before any work starts.
 - Services: hybrid service and repair, brakes, oil changes and fluids, diagnostics (check engine, electrical, no-start, warning lights), A/C service, starters, alternators, belts, suspension, tune-ups.
 - Approved starting prices live in `PRICES` / `PRICE_RULES` in `scripts/build_blog.py` (shown on `/services/#prices`). Articles may mention at most one relevant starting price in the call-to-action section, copied exactly (e.g. "Diagnostics start at $99, credited toward the repair"), and link to `/services/#prices`. Never invent or change a price.
-- Warranty: 12 months / 12,000 miles on parts and labor (customer-supplied parts: labor only).
-- Do NOT state certifications (e.g. ASE), years of experience, review counts, or customer stories. Do not invent any of these.
+- Do NOT state any warranty or guarantee terms, certifications (e.g. ASE), years of experience, review counts, or customer stories. Do not invent any of these.
 
 ## Daily article workflow (runs every other day)
 

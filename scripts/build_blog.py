@@ -294,7 +294,6 @@ PRICE_RULES = [
     "You get a written quote and approve it before any work starts.",
     "No trip fee within 25 miles of Mira Mesa; $25 to $50 beyond that, up to 50 miles.",
     "The diagnostic fee is credited toward the repair if you book it.",
-    "Warranty: 12 months / 12,000 miles on parts and labor. Customer-supplied parts get labor only.",
 ]
 
 
