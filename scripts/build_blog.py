@@ -14,6 +14,7 @@ import json
 import os
 import re
 import subprocess
+import urllib.parse
 import sys
 
 try:
@@ -154,6 +155,21 @@ def cta():
 """
 
 
+def share_html(url, title):
+    """Share buttons at the end of each article: Facebook, X, text, email, copy link."""
+    u, t = urllib.parse.quote(url, safe=""), urllib.parse.quote(title, safe="")
+    links = [("Facebook", f"https://www.facebook.com/sharer/sharer.php?u={u}"),
+             ("X", f"https://twitter.com/intent/tweet?url={u}&text={t}"),
+             ("LinkedIn", f"https://www.linkedin.com/sharing/share-offsite/?url={u}"),
+             ("Text", f"sms:?&body={t}%20{u}"),
+             ("Email", f"mailto:?subject={t}&body={u}")]
+    btns = "".join(f'<a class="btn btn-ghost" href="{h}" target="_blank" rel="noopener">{n}</a>' for n, h in links)
+    btns += (f'<button type="button" class="btn btn-ghost" data-url="{url}" '
+             'onclick="var b=this,l=b.dataset.url;if(navigator.share){navigator.share({title:document.title,url:l}).catch(function(){})}'
+             'else{navigator.clipboard.writeText(l).then(function(){b.textContent=\'Link copied\'})}">Copy link</button>')
+    return f'<div class="share"><h2>Share this guide</h2><p>Know someone dealing with this? Send it their way.</p><div class="review-btns review-btns-sm">{btns}</div></div>'
+
+
 def build_article(a, arts):
     url = f"{SITE}/blog/{a['slug']}/"
     ld = [
@@ -182,6 +198,7 @@ def build_article(a, arts):
     if others:
         related = '<div class="related"><h2>More car repair guides</h2><ul class="list">' + "".join(
             f'<li><a href="/blog/{o["slug"]}/">{esc(o["title"])}</a></li>' for o in others) + "</ul></div>"
+    share = share_html(url, a["title"])
     page = head(f"{a['title']} | Pinoy Mobile Mechanic", a["description"], url, ld, "guides")
     page += f"""<p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Car repair guides</a></p>
 <article>
@@ -191,6 +208,7 @@ def build_article(a, arts):
 {faq_html}
 <h2>About Pinoy Mobile Mechanic</h2>
 <p>Pinoy Mobile Mechanic is a mobile auto repair business based in Mira Mesa, San Diego. It repairs cars at the customer's home or work lot anywhere within 50 miles, Monday to Saturday, 8 AM to 5 PM, and is licensed by the California Bureau of Automotive Repair (ARD 315968). Call or text {PHONE_TEXT}.</p>
+{share}
 </article>
 {cta()}
 {related}

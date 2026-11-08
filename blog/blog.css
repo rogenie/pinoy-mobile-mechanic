@@ -70,3 +70,6 @@ footer a{color:var(--ink-3)}
 .review-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:14px 0}
 .review-btns-sm{grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px;margin:10px 0 16px}
 .review-btns-sm .btn{min-height:27px;padding:0 10px;font-size:.7rem}
+
+.share{margin-top:28px}
+.share button.btn{cursor:pointer;width:100%;background:transparent;font-size:.7rem}
