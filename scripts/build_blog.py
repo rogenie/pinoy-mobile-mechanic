@@ -137,6 +137,7 @@ Follow us: {social_links()}
 <a class="btn btn-primary" href="{BOOK}" target="_blank" rel="noopener">Book a visit</a>
 <a class="btn btn-ghost" href="tel:{PHONE}">Call</a>
 </div></div>
+<script data-goatcounter="https://pinoymobilemechanic.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 """
