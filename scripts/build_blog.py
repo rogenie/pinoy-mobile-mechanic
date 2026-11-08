@@ -411,6 +411,7 @@ def build_reviews():
     page += f"""<p class="crumbs"><a href="/">Home</a> / Reviews</p>
 <h1>What customers say</h1>
 <p class="lede">Real reviews from drivers we've helped across San Diego County.</p>
+{leave.replace('class="review-btns"', 'class="review-btns review-btns-sm"', 1)}
 <div class="hazard" aria-hidden="true"></div>
 {cards}
 <h2>Had us out recently?</h2>
