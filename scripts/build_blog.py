@@ -294,6 +294,7 @@ PRICES = [
     ("A/C recharge", "$149", 149, ""),
     ("Any other job", "$130/hour + parts", None, ""),
 ]
+SHOW_PRICES = False  # set True to put the starting-price table back on /services/#prices
 PRICE_RULES = [
     "Prices are starting prices for most sedans and small SUVs, parts and labor included unless noted. Trucks, European cars, hybrids and V6/V8 engines can cost more.",
     "You get a written quote and approve it before any work starts.",
@@ -317,15 +318,21 @@ def build_services():
                                 "priceSpecification": {"@type": "PriceSpecification", "minPrice": v, "priceCurrency": "USD"},
                                 "seller": BUSINESS} for n, _, v, _ in PRICES if v]}]
     items = "".join(f"<li><b>{esc(n)}</b>{esc(d)}</li>" for n, d in SERVICES)
+    prices_html = ""
+    if SHOW_PRICES:
+        prices_html = f"""<h2 id="prices">Starting prices</h2>
+<table><thead><tr><th>Service</th><th>Starting at</th></tr></thead><tbody>{"".join(f"<tr><td>{esc(n)}{(' <span style=\"color:var(--ink-3)\">(' + esc(note) + ')</span>') if note else ''}</td><td><b>{esc(p)}</b></td></tr>" for n, p, _, note in PRICES)}</tbody></table>
+<ul>{"".join(f"<li>{esc(r)}</li>" for r in PRICE_RULES)}</ul>
+"""
+    else:
+        ld = ld[:1]
     page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, ld, "services")
     page += f"""<p class="crumbs"><a href="/">Home</a> / Services</p>
 <h1>What we fix at your home or work</h1>
 <p class="lede">Pinoy Mobile Mechanic brings the repair to wherever your car is parked, anywhere within 50 miles of Mira Mesa. You get a written quote before any work starts.</p>
 <div class="hazard" aria-hidden="true"></div>
 <ul class="facts">{items}</ul>
-<h2 id="prices">Starting prices</h2>
-<table><thead><tr><th>Service</th><th>Starting at</th></tr></thead><tbody>{"".join(f"<tr><td>{esc(n)}{(' <span style=\"color:var(--ink-3)\">(' + esc(note) + ')</span>') if note else ''}</td><td><b>{esc(p)}</b></td></tr>" for n, p, _, note in PRICES)}</tbody></table>
-<ul>{"".join(f"<li>{esc(r)}</li>" for r in PRICE_RULES)}</ul>
+{prices_html}
 <p>Not sure which one you need? That's normal. <a href="{BOOK}" target="_blank" rel="noopener">Book a visit</a> or call or text <a href="tel:{PHONE}">{PHONE_TEXT}</a>, describe what the car is doing, and we'll find the cause. If a job truly needs a shop with a lift, we'll tell you straight.</p>
 <p>Want to understand a problem first? Read our <a href="/blog/">car repair guides</a>.</p>
 {cta()}
@@ -472,7 +479,7 @@ def build_llms_txt(arts):
         f"- Phone and text: {PHONE_TEXT}. Book online: {BOOK}",
         "- Licensed by the California Bureau of Automotive Repair, ARD 315968. "
         "Customers get a written quote before any work starts.",
-        "- Starting prices (most cars): " + "; ".join(f"{n} {p}" for n, p, _, _ in PRICES) + ". " + " ".join(PRICE_RULES[2:]),
+        *(["- Starting prices (most cars): " + "; ".join(f"{n} {p}" for n, p, _, _ in PRICES) + ". " + " ".join(PRICE_RULES[2:])] if SHOW_PRICES else []),
         "",
         "## Pages",
         f"- [Home]({SITE}/): services, service area, hours, booking",

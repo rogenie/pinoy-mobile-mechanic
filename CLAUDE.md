@@ -17,7 +17,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - Mon–Sat 8:00–5:00, Sunday closed. Phone/text 858-933-7045. Book online (button on every page).
 - Licensed with the California Bureau of Automotive Repair, ARD 315968. Written quote before any work starts.
 - Services: hybrid service and repair, brakes, oil changes and fluids, diagnostics (check engine, electrical, no-start, warning lights), A/C service, starters, alternators, belts, suspension, tune-ups.
-- Approved starting prices live in `PRICES` / `PRICE_RULES` in `scripts/build_blog.py` (shown on `/services/#prices`). Articles may mention at most one relevant starting price in the call-to-action section, copied exactly (e.g. "Diagnostics start at $99, credited toward the repair"), and link to `/services/#prices`. Never invent or change a price.
+- Prices are NOT shown on the site right now (`SHOW_PRICES = False` in the script). Never state Pinoy prices in articles. Say the customer gets a written quote before any work starts.
 - Do NOT state any warranty or guarantee terms, certifications (e.g. ASE), years of experience, review counts, or customer stories. Do not invent any of these.
 
 ## Daily article workflow (runs every other day)
@@ -52,7 +52,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
       Aim for at least 8 sourced numbers per article. Every number links to the page it came from, opened in this run. Never invent or round up a statistic; if you can't source it, leave it out. Describe symptoms as "what it can feel like", never as a self-diagnosis guide (no "if X then it's part Y" tables).
    4. **The dream** (`##`, e.g. "What if…"): short picture of life with the problem gone: car works, fixed at home or work, no tow, no waiting room, price known before work.
    5. **Solution, kept vague** (`##`): 2–3 sentences only. A mobile mechanic comes to the car, finds what's actually wrong, gives a written quote first, and often fixes it on the same visit. No steps, no list of what gets tested, no parts, no procedure.
-   6. **Call to action** (`##`): Pinoy comes to your home or work lot within 50 miles of Mira Mesa, finds the cause, written quote, fixes it where it's parked, Mon–Sat 8–5. Optionally one relevant starting price from `PRICES`. Bold line: "Book a visit online in about a minute, or call or text 858-933-7045". Link to `/` and `/why-us/`.
+   6. **Call to action** (`##`): Pinoy comes to your home or work lot within 50 miles of Mira Mesa, finds the cause, written quote, fixes it where it's parked, Mon–Sat 8–5. Bold line: "Book a visit online in about a minute, or call or text 858-933-7045". Link to `/` and `/why-us/`.
 
    NO DIY, ever. Never tell readers how to test, check, repair, replace, adjust, top up, jump-start, tighten, clean or bypass anything, in the body or the FAQ. No tool lists, part numbers, torque values or step-by-step procedures. Describe symptoms and causes, never how to fix them. The only things readers are told to do themselves: stop driving when it's unsafe, get to safety, and call a professional.
 
