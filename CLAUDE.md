@@ -6,7 +6,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - `content/articles/*.md` — blog articles (front matter + Markdown). Source of truth.
 - `content/keywords.md` — article queue
 - `scripts/build_blog.py` — builds `blog/`, `services/`, `why-us/`, `reviews/`, `sitemap.xml`, `robots.txt`, `llms.txt`, `status.json` (read by the dashboard), and the newest-guides list between the GUIDES markers in `index.html`. Never hand-edit those outputs. Social links (Facebook, Instagram, Google) appear in the footer of every page; they live in `SOCIALS` / `GOOGLE_PROFILE_URL` in the script, and the homepage footer is filled between the SOCIAL markers.
-- Menu on every page: Services (`/services/`, list in `SERVICES` in the script), Why us (`/why-us/`), Guides (`/blog/`), Reviews (`/reviews/`), all built by the script.
+- Menu on every page: Services (`/services/`, list in `SERVICES` in the script), Why us (`/why-us/`), Reviews (`/reviews/`), all built by the script. Guides (`/blog/`) is linked in the footer of every page, not the menu.
 - `content/reviews.yml` — real reviews only, copied word for word with their source. Never write, invent or paraphrase a review or testimonial. The daily article run does not touch this file.
 - `content/review-widget.html` — embed code for the review widget (Google/Facebook/Yelp sync). Shown at the top of `/reviews/` when it holds code; empty means hidden. The daily article run does not touch it.
 

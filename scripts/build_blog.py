@@ -115,7 +115,7 @@ def head(title, description, url, extra_ld, current=None):
 """
 
 
-MENU = [("services", "Services", "/services/"), ("why-us", "Why us", "/why-us/"), ("guides", "Guides", "/blog/"), ("reviews", "Reviews", "/reviews/")]
+MENU = [("services", "Services", "/services/"), ("why-us", "Why us", "/why-us/"), ("reviews", "Reviews", "/reviews/")]
 
 
 def nav(current=None):
@@ -127,6 +127,7 @@ def nav(current=None):
 
 def tail():
     return f"""<footer>
+<a href="/blog/" style="color:var(--accent-text);font-size:12px">Car repair guides &rarr;</a><br>
 Pinoy Mobile Mechanic LLC &middot; Mobile auto repair within 50 miles of Mira Mesa, San Diego<br>
 California Bureau of Automotive Repair &middot; ARD 315968<br>
 <a href="/">Home</a> &middot; <a href="/services/">Services</a> &middot; <a href="/why-us/">Why us</a> &middot; <a href="/blog/">Car repair guides</a> &middot; <a href="/reviews/">Reviews</a> &middot; <a href="tel:{PHONE}">{PHONE_TEXT}</a><br>

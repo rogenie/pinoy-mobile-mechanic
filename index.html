@@ -182,7 +182,9 @@ body{
 }
 
 /* ---- menu ---- */
-.nav{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0;padding:0;list-style:none}
+.nav{display:flex;gap:6px;margin:12px 0 0;padding:0;list-style:none}
+.nav li{flex:1}
+.nav a{justify-content:center;width:100%}
 .nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.02em}
 .nav a:hover{border-color:var(--accent);color:var(--accent-text)}
 
@@ -403,7 +405,6 @@ footer{
     <ul class="nav">
       <li><a href="/services/">Services</a></li>
       <li><a href="/why-us/">Why us</a></li>
-      <li><a href="/blog/">Guides</a></li>
       <li><a href="/reviews/">Reviews</a></li>
     </ul>
   </nav>
@@ -553,6 +554,7 @@ footer{
   </section>
 
   <footer>
+    <a href="/blog/" style="color:var(--accent-text);font-size:12px">Car repair guides &rarr;</a><br>
     Pinoy Mobile Mechanic LLC<br>
     California Bureau of Automotive Repair &middot; ARD 315968<br>
     <a href="/services/" style="color:var(--ink-3)">Services</a> &middot; <a href="/why-us/" style="color:var(--ink-3)">Why us</a> &middot; <a href="/blog/" style="color:var(--ink-3)">Car repair guides</a> &middot; <a href="/reviews/" style="color:var(--ink-3)">Reviews</a><br>
