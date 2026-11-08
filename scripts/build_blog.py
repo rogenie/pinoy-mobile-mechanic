@@ -239,7 +239,7 @@ def build_sitemap(arts):
 
 
 # Paste the Google Business Profile link (Share > copy link, or the Maps URL) once it's verified.
-GOOGLE_PROFILE_URL = ""
+GOOGLE_PROFILE_URL = "https://www.google.com/maps/place/PINOY+MOBILE+MECHANIC/@32.924324,-117.1217935,17z/data=!3m1!4b1!4m6!3m5!1s0x80dbf9764482941b:0xc0eb98c3f1605d2f!8m2!3d32.9243195!4d-117.1192186!16s%2Fg%2F11p2llr00w"
 
 SOCIALS = [
     ("Facebook", "https://www.facebook.com/Pinoymobilemechanic"),
