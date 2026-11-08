@@ -67,3 +67,4 @@ footer a{color:var(--ink-3)}
 .review{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;margin:14px 0}
 .review p{margin:0 0 8px}
 .review .meta{margin:0}
+.review-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:14px 0}

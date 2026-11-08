@@ -256,6 +256,10 @@ def social_links(color="var(--ink-3)"):
 
 # Paste the Google "Ask for reviews" short link here once the Google Business Profile is verified.
 GOOGLE_REVIEW_LINK = ""
+# Review buttons on /reviews/ ("Had us out recently?"). Empty = button hidden.
+BING_REVIEW_LINK = ""    # Bing Places listing link, once it's set up
+YELP_REVIEW_LINK = ""    # Yelp business page link, once it exists
+FACEBOOK_REVIEW_LINK = "https://www.facebook.com/Pinoymobilemechanic/reviews"
 
 
 SERVICES = [
@@ -391,10 +395,11 @@ def build_reviews():
     widget = re.sub(r"<!--.*?-->", "", widget, flags=re.S).strip()
     if widget:
         cards = f'<div class="review-widget">{widget}</div>\n' + (cards if reviews else "")
-    leave = ""
-    if GOOGLE_REVIEW_LINK:
-        leave = (f'<p><a class="btn btn-primary" href="{GOOGLE_REVIEW_LINK}" target="_blank" '
-                 f'rel="noopener">Leave a Google review</a></p>')
+    buttons = [("Google", GOOGLE_REVIEW_LINK or GOOGLE_PROFILE_URL, True), ("Facebook", FACEBOOK_REVIEW_LINK, False),
+               ("Yelp", YELP_REVIEW_LINK, False), ("Bing", BING_REVIEW_LINK, False)]
+    leave = '<div class="review-btns">' + "".join(
+        f'<a class="btn {"btn-primary" if main else "btn-ghost"}" href="{u}" target="_blank" rel="noopener">Review us on {n}</a>'
+        for n, u, main in buttons if u) + "</div>"
     page = head(f"{title} | Pinoy Mobile Mechanic", desc, url, [], "reviews")
     page += f"""<p class="crumbs"><a href="/">Home</a> / Reviews</p>
 <h1>What customers say</h1>
@@ -404,7 +409,6 @@ def build_reviews():
 <h2>Had us out recently?</h2>
 <p>A short review helps other San Diego drivers find a mechanic they can trust.</p>
 {leave}
-<p><a class="btn btn-ghost" href="https://www.facebook.com/Pinoymobilemechanic" target="_blank" rel="noopener">See us on Facebook</a></p>
 {cta()}
 """
     page += tail()

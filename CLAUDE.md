@@ -9,6 +9,7 @@ Static site for pinoymobilemechanic.com. Pushing to `main` publishes it. No appr
 - Menu on every page: Services (`/services/`, list in `SERVICES` in the script), Why us (`/why-us/`), Reviews (`/reviews/`), all built by the script. Guides (`/blog/`) is linked in the footer of every page, not the menu.
 - `content/reviews.yml` — real reviews only, copied word for word with their source. Never write, invent or paraphrase a review or testimonial. The daily article run does not touch this file.
 - `content/review-widget.html` — embed code for the review widget (Google/Facebook/Yelp sync). Shown at the top of `/reviews/` when it holds code; empty means hidden. The daily article run does not touch it.
+- Review buttons on `/reviews/` come from `GOOGLE_REVIEW_LINK` (falls back to the Google profile), `FACEBOOK_REVIEW_LINK`, `YELP_REVIEW_LINK`, `BING_REVIEW_LINK` in the script; empty links are hidden.
 
 ## Business facts (use only these)
 
