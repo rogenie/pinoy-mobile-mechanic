@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-10",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-10",
+   "title": "Brake Pad Replacement Cost in San Diego: What to Expect",
+   "keyword": "brake pad replacement cost san diego",
+   "url": "https://pinoymobilemechanic.com/blog/brake-pad-replacement-cost-san-diego/"
+  },
   {
    "date": "2026-11-07",
    "title": "Car Won't Start but Clicks? What It Means and What to Do",
@@ -9,8 +15,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 62,
- "next_topic": "brake pad replacement cost san diego",
+ "queue_left": 61,
+ "next_topic": "check engine light flashing",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
