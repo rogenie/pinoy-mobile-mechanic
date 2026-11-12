@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-12",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-12",
+   "title": "Check Engine Light Flashing? What It Means and What to Do",
+   "keyword": "check engine light flashing",
+   "url": "https://pinoymobilemechanic.com/blog/check-engine-light-flashing/"
+  },
   {
    "date": "2026-11-10",
    "title": "Brake Pad Replacement Cost in San Diego: What to Expect",
@@ -15,8 +21,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 61,
- "next_topic": "check engine light flashing",
+ "queue_left": 60,
+ "next_topic": "mobile mechanic vs repair shop",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true

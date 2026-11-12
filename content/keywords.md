@@ -8,7 +8,7 @@ Order: high-intent problems and costs first (people ready to book), then local a
 ## Problems and costs (people ready to book)
 - [x] car-wont-start-clicking-noise | car won't start clicking noise | What the click means, why guessing is costly, on-site fix
 - [x] brake-pad-replacement-cost-san-diego | brake pad replacement cost san diego | Pads vs pads+rotors, per axle, what changes the price, mobile vs shop
-- [ ] check-engine-light-flashing | check engine light flashing | Solid vs flashing, misfire risk to the catalytic converter, safe to drive?
+- [x] check-engine-light-flashing | check engine light flashing | Solid vs flashing, misfire risk to the catalytic converter, safe to drive?
 - [ ] mobile-mechanic-vs-repair-shop | mobile mechanic vs repair shop | Which jobs suit a driveway, which need a lift, cost and time differences
 - [ ] alternator-replacement-cost | alternator replacement cost | Signs, price ranges by car type, rebuilt vs new
 - [ ] car-battery-keeps-dying | car battery keeps dying overnight | Parasitic draw, age, alternator, heat; why it keeps happening
