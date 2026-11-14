@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-14",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-14",
+   "title": "Mobile Mechanic vs Repair Shop: Which Is Right for Your Car?",
+   "keyword": "mobile mechanic vs repair shop",
+   "url": "https://pinoymobilemechanic.com/blog/mobile-mechanic-vs-repair-shop/"
+  },
   {
    "date": "2026-11-12",
    "title": "Check Engine Light Flashing? What It Means and What to Do",
@@ -21,8 +27,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 60,
- "next_topic": "mobile mechanic vs repair shop",
+ "queue_left": 59,
+ "next_topic": "alternator replacement cost",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
