@@ -10,7 +10,7 @@ Order: high-intent problems and costs first (people ready to book), then local a
 - [x] brake-pad-replacement-cost-san-diego | brake pad replacement cost san diego | Pads vs pads+rotors, per axle, what changes the price, mobile vs shop
 - [x] check-engine-light-flashing | check engine light flashing | Solid vs flashing, misfire risk to the catalytic converter, safe to drive?
 - [x] mobile-mechanic-vs-repair-shop | mobile mechanic vs repair shop | Which jobs suit a driveway, which need a lift, cost and time differences
-- [ ] alternator-replacement-cost | alternator replacement cost | Signs, price ranges by car type, rebuilt vs new
+- [x] alternator-replacement-cost | alternator replacement cost | Signs, price ranges by car type, rebuilt vs new
 - [ ] car-battery-keeps-dying | car battery keeps dying overnight | Parasitic draw, age, alternator, heat; why it keeps happening
 - [ ] brakes-squeaking-when-stopping | brakes squeaking when stopping | Wear indicators, glazing, morning dew squeak vs real wear
 - [ ] car-overheating-causes | car overheating | Coolant, thermostat, fan, water pump; what to do on the freeway

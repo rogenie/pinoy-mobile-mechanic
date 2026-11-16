@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-16",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-16",
+   "title": "Alternator Replacement Cost: Price Ranges and Warning Signs",
+   "keyword": "alternator replacement cost",
+   "url": "https://pinoymobilemechanic.com/blog/alternator-replacement-cost/"
+  },
   {
    "date": "2026-11-14",
    "title": "Mobile Mechanic vs Repair Shop: Which Is Right for Your Car?",
@@ -27,8 +33,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 59,
- "next_topic": "alternator replacement cost",
+ "queue_left": 58,
+ "next_topic": "car battery keeps dying overnight",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
