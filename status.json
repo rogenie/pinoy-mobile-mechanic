@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-18",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-18",
+   "title": "Car Battery Keeps Dying Overnight? Why It Happens and What to Do",
+   "keyword": "car battery keeps dying overnight",
+   "url": "https://pinoymobilemechanic.com/blog/car-battery-keeps-dying/"
+  },
   {
    "date": "2026-11-16",
    "title": "Alternator Replacement Cost: Price Ranges and Warning Signs",
@@ -33,8 +39,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 58,
- "next_topic": "car battery keeps dying overnight",
+ "queue_left": 57,
+ "next_topic": "brakes squeaking when stopping",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
