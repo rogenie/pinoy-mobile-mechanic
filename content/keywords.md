@@ -12,7 +12,7 @@ Order: high-intent problems and costs first (people ready to book), then local a
 - [x] mobile-mechanic-vs-repair-shop | mobile mechanic vs repair shop | Which jobs suit a driveway, which need a lift, cost and time differences
 - [x] alternator-replacement-cost | alternator replacement cost | Signs, price ranges by car type, rebuilt vs new
 - [x] car-battery-keeps-dying | car battery keeps dying overnight | Parasitic draw, age, alternator, heat; why it keeps happening
-- [ ] brakes-squeaking-when-stopping | brakes squeaking when stopping | Wear indicators, glazing, morning dew squeak vs real wear
+- [x] brakes-squeaking-when-stopping | brakes squeaking when stopping | Wear indicators, glazing, morning dew squeak vs real wear
 - [ ] car-overheating-causes | car overheating | Coolant, thermostat, fan, water pump; what to do on the freeway
 - [ ] battery-alternator-or-starter | how to tell if it's the battery alternator or starter | Symptom table, why guessing wastes money
 - [ ] pre-purchase-inspection-san-diego | pre purchase car inspection san diego | What a PPI covers, private sale tips, red flags

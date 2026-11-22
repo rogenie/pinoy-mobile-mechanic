@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-22",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-22",
+   "title": "Brakes Squeaking When Stopping? What It Means and What to Do",
+   "keyword": "brakes squeaking when stopping",
+   "url": "https://pinoymobilemechanic.com/blog/brakes-squeaking-when-stopping/"
+  },
   {
    "date": "2026-11-18",
    "title": "Car Battery Keeps Dying Overnight? Why It Happens and What to Do",
@@ -39,8 +45,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 57,
- "next_topic": "brakes squeaking when stopping",
+ "queue_left": 56,
+ "next_topic": "car overheating",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
