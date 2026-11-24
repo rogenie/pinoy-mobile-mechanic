@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-24",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-24",
+   "title": "Car Overheating? Common Causes and What to Do on the Freeway",
+   "keyword": "car overheating",
+   "url": "https://pinoymobilemechanic.com/blog/car-overheating-causes/"
+  },
   {
    "date": "2026-11-22",
    "title": "Brakes Squeaking When Stopping? What It Means and What to Do",
@@ -45,8 +51,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 56,
- "next_topic": "car overheating",
+ "queue_left": 55,
+ "next_topic": "how to tell if it's the battery alternator or starter",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
