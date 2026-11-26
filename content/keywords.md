@@ -14,7 +14,7 @@ Order: high-intent problems and costs first (people ready to book), then local a
 - [x] car-battery-keeps-dying | car battery keeps dying overnight | Parasitic draw, age, alternator, heat; why it keeps happening
 - [x] brakes-squeaking-when-stopping | brakes squeaking when stopping | Wear indicators, glazing, morning dew squeak vs real wear
 - [x] car-overheating-causes | car overheating | Coolant, thermostat, fan, water pump; what to do on the freeway
-- [ ] battery-alternator-or-starter | how to tell if it's the battery alternator or starter | Symptom table, why guessing wastes money
+- [x] battery-alternator-or-starter | how to tell if it's the battery alternator or starter | Symptom table, why guessing wastes money
 - [ ] pre-purchase-inspection-san-diego | pre purchase car inspection san diego | What a PPI covers, private sale tips, red flags
 - [ ] car-ac-blowing-hot-air | car ac blowing hot air | Refrigerant leak, compressor clutch, blend door, cabin filter
 - [ ] grinding-noise-when-braking | grinding noise when braking | Metal-to-metal, rotor damage, stop driving?

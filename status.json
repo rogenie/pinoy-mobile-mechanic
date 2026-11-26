@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-26",
  "schedule": "Every other day (even-numbered dates), 4:53 AM Pacific",
  "articles": [
+  {
+   "date": "2026-11-26",
+   "title": "Battery, Alternator or Starter? Why It's So Hard to Tell",
+   "keyword": "how to tell if it's the battery alternator or starter",
+   "url": "https://pinoymobilemechanic.com/blog/battery-alternator-or-starter/"
+  },
   {
    "date": "2026-11-24",
    "title": "Car Overheating? Common Causes and What to Do on the Freeway",
@@ -51,8 +57,8 @@
    "url": "https://pinoymobilemechanic.com/blog/car-wont-start-clicking-noise/"
   }
  ],
- "queue_left": 55,
- "next_topic": "how to tell if it's the battery alternator or starter",
+ "queue_left": 54,
+ "next_topic": "pre purchase car inspection san diego",
  "reviews_on_site": 0,
  "review_widget": true,
  "google_review_link": true
